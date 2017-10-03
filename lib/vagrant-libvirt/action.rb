@@ -289,6 +289,49 @@ module VagrantPlugins
         end
       end
 
+      def self.action_snapshot_list
+        Vagrant::Action::Builder.new.tap do |b|
+          b.use ConfigValidate
+          b.use Call, IsCreated do |env, b2|
+            unless env[:result]
+              b2.use MessageNotCreated
+              next
+            end
+
+            b2.use Call, IsRunning do |env2, b3|
+              unless env2[:result]
+                b3.use MessageNotRunning
+                next
+              end
+
+              b3.use SnapshotList
+            end
+          end
+        end
+      end
+
+      def self.action_snapshot_save
+        Vagrant::Action::Builder.new.tap do |b|
+          b.use ConfigValidate
+          b.use Call, IsCreated do |env, b2|
+            unless env[:result]
+              b2.use MessageNotCreated
+              next
+            end
+
+            b2.use Call, IsRunning do |env2, b3|
+              unless env2[:result]
+                b3.use MessageNotRunning
+                next
+              end
+
+			  print "skapau"
+              b3.use SnapshotSave
+            end
+          end
+        end
+      end
+
       # This is the action that will run a single SSH command.
       def self.action_ssh_run
         Vagrant::Action::Builder.new.tap do |b|
@@ -332,6 +375,8 @@ module VagrantPlugins
       autoload :MessageNotCreated, action_root.join('message_not_created')
       autoload :MessageNotRunning, action_root.join('message_not_running')
       autoload :MessageNotSuspended, action_root.join('message_not_suspended')
+      autoload :SnapshotSave, action_root.join('snapshot_save')
+      autoload :SnapshotList, action_root.join('snapshot_list')
 
       autoload :RemoveStaleVolume, action_root.join('remove_stale_volume')
 

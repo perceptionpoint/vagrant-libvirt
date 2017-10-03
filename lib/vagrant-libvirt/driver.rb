@@ -1,5 +1,7 @@
+require 'libvirt'
 require 'fog/libvirt'
 require 'log4r'
+require 'pry'
 
 module VagrantPlugins
   module ProviderLibvirt
@@ -10,10 +12,17 @@ module VagrantPlugins
       # settings as a key to allow per machine connection attributes
       # to be used.
       @@connection = nil
+	  @@raw_connection = nil
 
       def initialize(machine)
         @logger = Log4r::Logger.new('vagrant_libvirt::driver')
         @machine = machine
+      end
+      
+      def raw_connection
+        return @@raw_connection if @@raw_connection
+		@@raw_connection = 	Libvirt::open("qemu:///system")
+		@@raw_connection
       end
 
       def connection
@@ -60,6 +69,17 @@ module VagrantPlugins
         end
 
         domain
+      end
+
+      def create_snapshot(mid, snapshot_name)
+		domain = raw_connection.lookup_domain_by_uuid(mid)
+		domain.snapshot_create_xml("<domainsnapshot><name>#{snapshot_name}</name><description>running recorder agent</description></domainsnapshot>")
+        # binding.pry
+      end
+
+      def list_snapshots(mid)
+		domain = raw_connection.lookup_domain_by_uuid(mid)
+		return domain.list_snapshots()
       end
 
       def created?(mid)
