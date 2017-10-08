@@ -332,6 +332,34 @@ module VagrantPlugins
         end
       end
 
+      def self.action_snapshot_restore
+        Vagrant::Action::Builder.new.tap do |b|
+          b.use ConfigValidate
+          b.use Call, IsCreated do |env, b2|
+            unless env[:result]
+              b2.use MessageNotCreated
+              next
+            end
+
+            b2.use SnapshotRestore
+          end
+        end
+      end
+
+      def self.action_snapshot_delete
+        Vagrant::Action::Builder.new.tap do |b|
+          b.use ConfigValidate
+          b.use Call, IsCreated do |env, b2|
+            unless env[:result]
+              b2.use MessageNotCreated
+              next
+            end
+
+            b2.use SnapshotDelete
+          end
+        end
+      end
+
       # This is the action that will run a single SSH command.
       def self.action_ssh_run
         Vagrant::Action::Builder.new.tap do |b|
@@ -377,6 +405,8 @@ module VagrantPlugins
       autoload :MessageNotSuspended, action_root.join('message_not_suspended')
       autoload :SnapshotSave, action_root.join('snapshot_save')
       autoload :SnapshotList, action_root.join('snapshot_list')
+      autoload :SnapshotDelete, action_root.join('snapshot_delete')
+      autoload :SnapshotRestore, action_root.join('snapshot_restore')
 
       autoload :RemoveStaleVolume, action_root.join('remove_stale_volume')
 
