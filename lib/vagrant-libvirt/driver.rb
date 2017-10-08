@@ -74,12 +74,31 @@ module VagrantPlugins
       def create_snapshot(mid, snapshot_name)
 		domain = raw_connection.lookup_domain_by_uuid(mid)
 		domain.snapshot_create_xml("<domainsnapshot><name>#{snapshot_name}</name><description>running recorder agent</description></domainsnapshot>")
-        # binding.pry
+      end
+
+      def restore_snapshot(mid, snapshot_name)
+		domain = raw_connection.lookup_domain_by_uuid(mid)
+        domain.list_all_snapshots().each do |snapshot|
+            if snapshot.name == snapshot_name
+                domain.revert_to_snapshot(snapshot)
+                break
+            end
+        end
       end
 
       def list_snapshots(mid)
 		domain = raw_connection.lookup_domain_by_uuid(mid)
 		return domain.list_snapshots()
+      end
+
+      def delete_snapshot(mid, snapshot_name)
+		domain = raw_connection.lookup_domain_by_uuid(mid)
+        domain.list_all_snapshots().each do |snapshot|
+            if snapshot.name == snapshot_name
+                snapshot.delete()
+                break
+            end
+        end
       end
 
       def created?(mid)
