@@ -14,6 +14,7 @@
     <ip address="<%= @network_address %>" netmask="<%= @network_netmask %>">
     <% if @network_dhcp_enabled  %>
       <dhcp>
+        <range start="<%= @network_range_start %>" end="<%= @network_range_stop %>" />
         <host mac="c8:5b:76:20:55:11" ip="192.168.55.11"/>
         <host mac="c8:5b:76:20:55:12" ip="192.168.55.12"/>
         <host mac="c8:5b:76:20:55:13" ip="192.168.55.13"/>
