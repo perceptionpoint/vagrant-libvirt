@@ -118,7 +118,7 @@ module VagrantPlugins
         # Get IP address from arp table
         ip_address = nil
         begin
-          domain.wait_for(2) do
+          domain.wait_for(10) do
             addresses.each_pair do |_type, ip|
               # Multiple leases are separated with a newline, return only
               # the most recent address
