@@ -1,7 +1,6 @@
 require 'libvirt'
 require 'fog/libvirt'
 require 'log4r'
-require 'pry'
 
 module VagrantPlugins
   module ProviderLibvirt

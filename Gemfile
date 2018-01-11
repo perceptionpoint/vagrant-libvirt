@@ -16,7 +16,7 @@ group :development do
 
   gem 'vagrant-spec', :github => 'mitchellh/vagrant-spec'
 
-  gem 'pry'
+  #gem 'pry'
 end
 
 group :plugins do
