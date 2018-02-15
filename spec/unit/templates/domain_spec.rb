@@ -31,6 +31,7 @@ describe 'templates/domain' do
       domain.instance_variable_set('@domain_type', 'kvm')
       domain.cpu_mode = 'custom'
       domain.cpu_feature(name: 'AAA', policy: 'required')
+      domain.cputopology(sockets: '1', cores: '3', threads: '2')
       domain.machine_type = 'pc-compatible'
       domain.machine_arch = 'x86_64'
       domain.loader = '/efi/loader'
@@ -52,6 +53,9 @@ describe 'templates/domain' do
       domain.channel(type: 'unix',
                      target_name: 'org.qemu.guest_agent.0',
                      target_type: 'virtio')
+      domain.channel(type: 'spicevmc',
+                     target_name: 'com.redhat.spice.0',
+                     target_type: 'virtio')
       domain.channel(type: 'unix',
                      target_type: 'guestfwd',
                      target_address: '192.0.2.42',
@@ -72,6 +76,18 @@ describe 'templates/domain' do
       domain.qemuargs(value: 'dummy-device')
     end
     let(:test_file) { 'domain_all_settings.xml' }
+    it 'renders template' do
+      domain.finalize!
+      expect(domain.to_xml('domain')).to eq xml_expected
+    end
+  end
+
+  context 'when custom cpu model enabled' do
+    before do
+      domain.cpu_mode = 'custom'
+      domain.cpu_model = 'SandyBridge'
+    end
+    let(:test_file) { 'domain_custom_cpu_model.xml' }
     it 'renders template' do
       domain.finalize!
       expect(domain.to_xml('domain')).to eq xml_expected

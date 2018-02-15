@@ -76,6 +76,9 @@ module VagrantPlugins
             @driver_name = iface_configuration.fetch(:driver_name, false)
             @driver_queues = iface_configuration.fetch(:driver_queues, false)
             @device_name = iface_configuration.fetch(:iface_name, false)
+            @mtu = iface_configuration.fetch(:mtu, nil)
+            @pci_bus = iface_configuration.fetch(:bus, nil)
+            @pci_slot = iface_configuration.fetch(:slot, nil)
             template_name = 'interface'
             # Configuration for public interfaces which use the macvtap driver
             if iface_configuration[:iface_type] == :public_network
@@ -143,8 +146,11 @@ module VagrantPlugins
                                     @device_name,
                                     @iface_number,
                                     @model_type,
+                                    @mtu,
                                     driver_options,
-                                    @udp_tunnel)
+                                    @udp_tunnel,
+                                    @pci_bus,
+                                    @pci_slot)
                     else
                       to_xml(template_name)
                     end
@@ -234,8 +240,8 @@ module VagrantPlugins
         end
 
         def interface_xml(type, source_options, mac, device_name,
-                          iface_number, model_type, driver_options,
-                          udp_tunnel={})
+                          iface_number, model_type, mtu, driver_options,
+                          udp_tunnel={}, pci_bus, pci_slot)
           Nokogiri::XML::Builder.new do |xml|
             xml.interface(type: type || 'network') do
               xml.source(source_options) do
@@ -245,7 +251,9 @@ module VagrantPlugins
               xml.target(dev: target_dev_name(device_name, type, iface_number))
               xml.alias(name: "net#{iface_number}")
               xml.model(type: model_type.to_s)
+              xml.mtu(size: Integer(mtu)) if mtu
               xml.driver(driver_options)
+              xml.address(type: 'pci', bus: pci_bus, slot: pci_slot) if pci_bus and pci_slot
             end
           end.to_xml(
             save_with: Nokogiri::XML::Node::SaveOptions::NO_DECLARATION |
