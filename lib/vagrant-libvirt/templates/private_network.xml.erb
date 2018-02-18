@@ -15,11 +15,6 @@
     <% if @network_dhcp_enabled  %>
       <dhcp>
         <range start="<%= @network_range_start %>" end="<%= @network_range_stop %>" />
-        <% for @worker in (1 .. 80) %>
-          <% for @box_idx in (10 .. 250).step(10) %>
-            <host mac="c8:5b:76:20:<%= @worker.to_s(16).rjust(2, '0') %>:<%= @box_idx.to_s(16).rjust(2, '0') %>" ip="192.168.<%= @worker %>.<%= @box_idx %>"/>
-          <% end %>
-        <% end %>
         <% if @network_dhcp_bootp_file  %>
           <% if @network_dhcp_bootp_server  %>
             <bootp file="<%= @network_dhcp_bootp_file %>" server="<%= @network_dhcp_bootp_server %>" />
