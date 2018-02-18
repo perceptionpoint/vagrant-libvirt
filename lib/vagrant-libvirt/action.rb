@@ -403,6 +403,7 @@ module VagrantPlugins
       autoload :MessageNotCreated, action_root.join('message_not_created')
       autoload :MessageNotRunning, action_root.join('message_not_running')
       autoload :MessageNotSuspended, action_root.join('message_not_suspended')
+      autoload :MessageWillNotDestroy, action_root.join('message_will_not_destroy')
       autoload :SnapshotSave, action_root.join('snapshot_save')
       autoload :SnapshotList, action_root.join('snapshot_list')
       autoload :SnapshotDelete, action_root.join('snapshot_delete')
