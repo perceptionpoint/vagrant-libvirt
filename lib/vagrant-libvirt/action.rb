@@ -19,6 +19,7 @@ module VagrantPlugins
       def self.action_up
         Vagrant::Action::Builder.new.tap do |b|
           b.use ConfigValidate
+          b.use BoxCheckOutdated
           b.use Call, IsCreated do |env, b2|
             # Create VM if not yet created.
             if !env[:result]
@@ -183,11 +184,17 @@ module VagrantPlugins
               next
             end
 
-            b2.use ClearForwardedPorts
-            # b2.use PruneNFSExports
-            b2.use DestroyDomain
-            b2.use DestroyNetworks
-            b2.use ProvisionerCleanup
+            b2.use Call, DestroyConfirm do |env2, b3|
+              if env2[:result]
+                b3.use ClearForwardedPorts
+                # b3.use PruneNFSExports
+                b3.use DestroyDomain
+                b3.use DestroyNetworks
+                b3.use ProvisionerCleanup
+              else
+                b3.use MessageWillNotDestroy
+              end
+            end
           end
         end
       end
