@@ -411,6 +411,10 @@ module VagrantPlugins
       autoload :MessageNotRunning, action_root.join('message_not_running')
       autoload :MessageNotSuspended, action_root.join('message_not_suspended')
       autoload :MessageWillNotDestroy, action_root.join('message_will_not_destroy')
+      autoload :SnapshotSave, action_root.join('snapshot_save')
+      autoload :SnapshotList, action_root.join('snapshot_list')
+      autoload :SnapshotDelete, action_root.join('snapshot_delete')
+      autoload :SnapshotRestore, action_root.join('snapshot_restore')
 
       autoload :RemoveStaleVolume, action_root.join('remove_stale_volume')
 
