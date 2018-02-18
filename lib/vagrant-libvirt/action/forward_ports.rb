@@ -47,6 +47,11 @@ module VagrantPlugins
                              message_attributes
             ))
 
+            if fp[:protocol] == 'udp'
+              @env[:ui].warn I18n.t('vagrant_libvirt.warnings.forwarding_udp')
+              next
+            end
+
             ssh_pid = redirect_port(
               @env[:machine],
               fp[:host_ip] || 'localhost',
@@ -95,6 +100,7 @@ module VagrantPlugins
             StrictHostKeyChecking=no
             PasswordAuthentication=no
             ForwardX11=#{ssh_info[:forward_x11] ? 'yes' : 'no'}
+            IdentitiesOnly=#{ssh_info[:keys_only] ? 'yes' : 'no'}
           ) + ssh_info[:private_key_path].map do |pk|
                 "IdentityFile='\"#{pk}\"'"
               end).map { |s| s.prepend('-o ') }.join(' ')
@@ -102,7 +108,7 @@ module VagrantPlugins
           options += " -o ProxyCommand=\"#{ssh_info[:proxy_command]}\"" if machine.provider_config.connect_via_ssh
 
           # TODO: instead of this, try and lock and get the stdin from spawn...
-          ssh_cmd = ''
+          ssh_cmd = 'exec '
           if host_port <= 1024
             @@lock.synchronize do
               # TODO: add i18n

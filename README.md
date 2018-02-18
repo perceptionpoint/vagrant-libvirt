@@ -11,20 +11,6 @@ control and provision machines via Libvirt toolkit.
 **Note:** Actual version is still a development one. Feedback is welcome and
 can help a lot :-)
 
-## QA status
-
-We periodically test basic functionality for vagrant-libvirt on various distributions.
-In the table below, build passing means that specific version combination of Vagrant + Vagrant-libvirt was installed correctly and `vagrant up` is working. Click the badge to see the log.
-
-|Vagrant|Vagrant-libvirt|ubuntu-12.04|ubuntu-14.04|ubuntu-16.04|debian-8|centos-6|centos-7|fedora-21|fedora-22|fedora-23|fedora-24|arch|
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|1.9.1|master|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=ubuntu-12.04/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=ubuntu-12.04/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=ubuntu-14.04/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=ubuntu-14.04/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=ubuntu-16.04/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=ubuntu-16.04/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=debian-8/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=debian-8/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=centos-6/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=centos-6/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=centos-7/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=centos-7/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=fedora-21/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=fedora-21/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=fedora-22/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=fedora-22/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=fedora-23/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=fedora-23/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=fedora-24/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=fedora-24/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=arch/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.9.1,distro=arch/lastBuild/consoleText)|
-|1.9.1|0.0.37|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=ubuntu-12.04/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=ubuntu-12.04/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=ubuntu-14.04/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=ubuntu-14.04/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=ubuntu-16.04/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=ubuntu-16.04/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=debian-8/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=debian-8/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=centos-6/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=centos-6/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=centos-7/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=centos-7/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=fedora-21/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=fedora-21/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=fedora-22/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=fedora-22/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=fedora-23/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=fedora-23/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=fedora-24/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=fedora-24/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=arch/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.9.1,distro=arch/lastBuild/consoleText)|
-|1.9.1|0.0.35|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=ubuntu-12.04/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=ubuntu-12.04/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=ubuntu-14.04/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=ubuntu-14.04/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=ubuntu-16.04/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=ubuntu-16.04/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=debian-8/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=debian-8/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=centos-6/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=centos-6/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=centos-7/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=centos-7/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=fedora-21/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=fedora-21/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=fedora-22/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=fedora-22/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=fedora-23/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=fedora-23/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=fedora-24/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=fedora-24/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=arch/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.9.1,distro=arch/lastBuild/consoleText)|
-|1.8.7|master|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=ubuntu-12.04/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=ubuntu-12.04/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=ubuntu-14.04/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=ubuntu-14.04/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=ubuntu-16.04/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=ubuntu-16.04/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=debian-8/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=debian-8/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=centos-6/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=centos-6/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=centos-7/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=centos-7/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=fedora-21/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=fedora-21/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=fedora-22/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=fedora-22/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=fedora-23/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=fedora-23/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=fedora-24/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=fedora-24/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=arch/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=master,qa_vagrant_version=1.8.7,distro=arch/lastBuild/consoleText)|
-|1.8.7|0.0.37|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=ubuntu-12.04/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=ubuntu-12.04/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=ubuntu-14.04/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=ubuntu-14.04/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=ubuntu-16.04/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=ubuntu-16.04/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=debian-8/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=debian-8/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=centos-6/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=centos-6/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=centos-7/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=centos-7/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=fedora-21/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=fedora-21/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=fedora-22/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=fedora-22/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=fedora-23/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=fedora-23/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=fedora-24/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=fedora-24/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=arch/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.37,qa_vagrant_version=1.8.7,distro=arch/lastBuild/consoleText)|
-|1.8.7|0.0.35|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=ubuntu-12.04/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=ubuntu-12.04/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=ubuntu-14.04/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=ubuntu-14.04/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=ubuntu-16.04/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=ubuntu-16.04/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=debian-8/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=debian-8/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=centos-6/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=centos-6/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=centos-7/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=centos-7/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=fedora-21/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=fedora-21/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=fedora-22/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=fedora-22/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=fedora-23/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=fedora-23/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=fedora-24/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=fedora-24/lastBuild/consoleText)|[![Build Status](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=arch/badge/icon)](https://jenkins.infernix.net/job/vagrant-libvirt-qa/qa_vagrant_libvirt_version=0.0.35,qa_vagrant_version=1.8.7,distro=arch/lastBuild/consoleText)|
-
 ## Index
 
 
@@ -287,6 +273,17 @@ end
   libvirt](https://libvirt.org/formatdomain.html#elementsNICSModel).
 * `memory` - Amount of memory in MBytes. Defaults to 512 if not set.
 * `cpus` - Number of virtual cpus. Defaults to 1 if not set.
+* `cputopology` - Number of CPU sockets, cores and threads running per core. All fields of `:sockets`, `:cores` and `:threads` are mandatory, `cpus` domain option must be present and must be equal to total count of **sockets * cores * threads**. For more details see [documentation](https://libvirt.org/formatdomain.html#elementsCPU).
+
+  ```ruby
+  Vagrant.configure("2") do |config|
+    config.vm.provider :libvirt do |libvirt|
+      libvirt.cpus = 4
+      libvirt.cputopology :sockets => '2', :cores => '2', :threads => '1'
+    end
+  end
+  ```
+
 * `nested` - [Enable nested
   virtualization](https://github.com/torvalds/linux/blob/master/Documentation/virtual/kvm/nested-vmx.txt).
   Default is false.
@@ -300,7 +297,7 @@ end
 * `cpu_fallback` - Whether to allow libvirt to fall back to a CPU model close
   to the specified model if features in the guest CPU are not supported on the
   host. Defaults to 'allow' if not set. Allowed values: `allow`, `forbid`.
-* `numa_nodes` - Specify an array of NUMA nodes for the guest. The syntax is similar to what would be set in the domain XML. `memory` must be in MB. Symmetrical and asymmetrical topologies are supported but make sure your total count of defined CPUs adds up to `v.cpus`. 
+* `numa_nodes` - Specify an array of NUMA nodes for the guest. The syntax is similar to what would be set in the domain XML. `memory` must be in MB. Symmetrical and asymmetrical topologies are supported but make sure your total count of defined CPUs adds up to `v.cpus`.
 
   The sum of all the memory defined here will act as your total memory for your guest VM. **This sum will override what is set in `v.memory`**
   ```
@@ -308,7 +305,7 @@ end
   v.numa_nodes = [
     {:cpus => "0-1", :memory => "1024"},
     {:cpus => "2-3", :memory => "4096"}
-  ] 
+  ]
   ```
 * `loader` - Sets path to custom UEFI loader.
 * `volume_cache` - Controls the cache mechanism. Possible values are "default",
@@ -488,6 +485,20 @@ An examples of network interface definitions:
     test_vm1.vm.network :private_network, :ip => "10.20.30.40"
   end
 
+  # Private network using DHCP and a custom network
+  config.vm.define :test_vm1 do |test_vm1|
+    test_vm1.vm.network :private_network,
+      :type => "dhcp",
+      :libvirt__network_address => '10.20.30.0'
+  end
+
+  # Private network (as above) using a domain name
+  config.vm.define :test_vm1 do |test_vm1|
+    test_vm1.vm.network :private_network,
+      :ip => "10.20.30.40",
+      :libvirt__domain_name => "test.local"
+  end
+
   # Private network. Point to Point between 2 Guest OS using a TCP tunnel
   # Guest 1
   config.vm.define :test_vm1 do |test_vm1|
@@ -556,8 +567,11 @@ starts with `libvirt__` string. Here is a list of those options:
   network 'default' is used.
 * `:libvirt__netmask` - Used only together with `:ip` option. Default is
   '255.255.255.0'.
+* `:libvirt__network_address` - Used only when `:type` is set to `dhcp`. Only `/24` subnet is supported. Default is `172.28.128.0`.
 * `:libvirt__host_ip` - Address to use for the host (not guest).  Default is
   first possible address (after network address).
+* `:libvirt__domain_name` - DNS domain of the DHCP server. Used only
+  when creating new network.
 * `:libvirt__dhcp_enabled` - If DHCP will offer addresses, or not. Used only
   when creating new network. Default is true.
 * `:libvirt__dhcp_start` - First address given out via DHCP.  Default is third
@@ -614,6 +628,9 @@ starts with `libvirt__` string. Here is a list of those options:
   failures](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/498)
 * `:mac` - MAC address for the interface. *Note: specify this in lowercase
   since Vagrant network scripts assume it will be!*
+* `:libvirt__mtu` - MTU size for the libvirt network, if not defined, the
+  created network will use the libvirt default (1500). VMs still need to set the
+  MTU accordingly.
 * `:model_type` - parameter specifies the model of the network adapter when you
   create a domain value by default virtio KVM believe possible values, see the
   documentation for libvirt
@@ -624,6 +641,8 @@ starts with `libvirt__` string. Here is a list of those options:
   info](http://www.linux-kvm.org/page/Multiqueue)
 * `:autostart` - Automatic startup of network by the libvirt daemon.
   If not specified the default is 'false'.
+* `:bus` - The bus of the PCI device. Both :bus and :slot have to be defined.
+* `:slot` - The slot of the PCI device. Both :bus and :slot have to be defined.
 
 When the option `:libvirt__dhcp_enabled` is to to 'false' it shouldn't matter
 whether the virtual network contains a DHCP server or not and vagrant-libvirt
@@ -672,6 +691,9 @@ used by this network are configurable at the provider level.
   for for more information.
 * `management_network_autostart` - Automatic startup of mgmt network, if not
   specified the default is 'false'.
+* `:management_network_pci_bus` -  The bus of the PCI device.
+* `:management_network_pci_slot` -  The slot of the PCI device.
+* `management_network_mac` - MAC address of management network interface.
 
 You may wonder how vagrant-libvirt knows the IP address a VM received.  Libvirt
 doesn't provide a standard way to find out the IP address of a running domain.
@@ -974,6 +996,24 @@ Vagrant.configure("2") do |config|
 end
 ```
 
+## Memory Backing
+
+You can specify memoryBacking options via `libvirt.memorybacking`. Available options are shown below. Full documentation is available at the [libvirt _memoryBacking_ section](https://libvirt.org/formatdomain.html#elementsMemoryBacking).
+
+NOTE: The hugepages `<page>` element is not yet supported
+
+```ruby
+Vagrant.configure("2") do |config|
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.memorybacking :hugepages
+    libvirt.memorybacking :nosharepages
+    libvirt.memorybacking :locked
+    libvirt.memorybacking :source, :type => 'file'
+    libvirt.memorybacking :access, :mode => 'shared'
+    libvirt.memorybacking :allocation, :mode => 'immediate'
+  end
+end
+```
 ## USB device passthrough
 
 You can specify multiple USB devices to passthrough to the VM via
@@ -1090,10 +1130,11 @@ Default is `eth0`.
 
 ## Synced Folders
 
-vagrant-libvirt supports bidirectional synced folders via nfs or 9p and
-unidirectional via rsync. The default is nfs. Vagrant automatically syncs the
-project folder on the host to `/vagrant` in the guest. You can also configure
+Vagrant automatically syncs the project folder on the host to `/vagrant` in the guest. You can also configure
 additional synced folders.
+
+`vagrant-libvirt` supports bidirectional synced folders via [NFS](https://en.wikipedia.org/wiki/Network_File_System) or [VirtFS](http://www.linux-kvm.org/page/VirtFS) ([9p or Plan 9](https://en.wikipedia.org/wiki/9P_(protocol))) and
+unidirectional via rsync. The default is NFS. Difference between NFS and 9p is explained [here](https://unix.stackexchange.com/questions/240281/virtfs-plan-9-vs-nfs-as-tool-for-share-folder-for-virtual-machine).
 
 You can change the synced folder type for `/vagrant` by explicity configuring
 it an setting the type, e.g.
@@ -1117,7 +1158,7 @@ config.vm.synced_folder './', '/vagrant', type: '9p', disabled: false, accessmod
 For 9p shares, a `mount: false` option allows to define synced folders without
 mounting them at boot.
 
-Further documentation on using 9p can be found [here](https://www.kernel.org/doc/Documentation/filesystems/9p.txt). Please do note that 9p depends on support in the guest and not all distros come with the 9p module by default.
+Further documentation on using 9p can be found in [kernel docs](https://www.kernel.org/doc/Documentation/filesystems/9p.txt) and in [QEMU wiki](https://wiki.qemu.org/Documentation/9psetup#Starting_the_Guest_directly). Please do note that 9p depends on support in the guest and not all distros come with the 9p module by default.
 
 **SECURITY NOTE:** for remote libvirt, nfs synced folders requires a bridged
 public network interface and you must connect to libvirt via ssh.

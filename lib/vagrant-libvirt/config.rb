@@ -51,6 +51,8 @@ module VagrantPlugins
       attr_accessor :management_network_mac
       attr_accessor :management_network_guest_ipv6
       attr_accessor :management_network_autostart
+      attr_accessor :management_network_pci_bus
+      attr_accessor :management_network_pci_slot
 
       # Default host prefix (alternative to use project folder name)
       attr_accessor :default_prefix
@@ -58,12 +60,14 @@ module VagrantPlugins
       # Domain specific settings used while creating new domain.
       attr_accessor :uuid
       attr_accessor :memory
+      attr_accessor :memory_backing
       attr_accessor :channel
       attr_accessor :cpus
       attr_accessor :cpu_mode
       attr_accessor :cpu_model
       attr_accessor :cpu_fallback
       attr_accessor :cpu_features
+      attr_accessor :cpu_topology
       attr_accessor :features
       attr_accessor :numa_nodes
       attr_accessor :loader
@@ -160,15 +164,19 @@ module VagrantPlugins
         @management_network_mac  = UNSET_VALUE
         @management_network_guest_ipv6 = UNSET_VALUE
         @management_network_autostart = UNSET_VALUE
+        @management_network_pci_slot = UNSET_VALUE
+        @management_network_pci_bus = UNSET_VALUE
 
         # Domain specific settings.
         @uuid              = UNSET_VALUE
         @memory            = UNSET_VALUE
+        @memory_backing    = UNSET_VALUE
         @cpus              = UNSET_VALUE
         @cpu_mode          = UNSET_VALUE
         @cpu_model         = UNSET_VALUE
         @cpu_fallback      = UNSET_VALUE
         @cpu_features      = UNSET_VALUE
+        @cpu_topology      = UNSET_VALUE
         @features          = UNSET_VALUE
         @numa_nodes        = UNSET_VALUE
         @loader            = UNSET_VALUE
@@ -311,6 +319,35 @@ module VagrantPlugins
 
         @cpu_features.push(name:   options[:name],
                            policy: options[:policy])
+      end
+
+      def cputopology(options = {})
+        if options[:sockets].nil? || options[:cores].nil? || options[:threads].nil?
+          raise 'CPU topology must have all of sockets, cores and threads specified'
+        end
+
+        if @cpu_topology == UNSET_VALUE
+          @cpu_topology = {}
+        end
+
+        @cpu_topology[:sockets] = options[:sockets]
+        @cpu_topology[:cores] = options[:cores]
+        @cpu_topology[:threads] = options[:threads]        
+      end
+
+      def memorybacking(option, config = {})
+        case option
+        when :source
+          raise 'Source type must be specified' if config[:type].nil?
+        when :access
+          raise 'Access mode must be specified' if config[:mode].nil?
+        when :allocation
+          raise 'Allocation mode must be specified' if config[:mode].nil?
+        end
+
+        @memory_backing = [] if @memory_backing == UNSET_VALUE
+        @memory_backing.push(name: option,
+                             config: config)
       end
 
       def input(options = {})
@@ -562,6 +599,8 @@ module VagrantPlugins
         @management_network_mac = nil if @management_network_mac == UNSET_VALUE
         @management_network_guest_ipv6 = 'yes' if @management_network_guest_ipv6 == UNSET_VALUE
         @management_network_autostart = false if @management_network_autostart == UNSET_VALUE
+        @management_network_pci_bus = nil if @management_network_pci_bus == UNSET_VALUE
+        @management_network_pci_slot = nil if @management_network_pci_slot == UNSET_VALUE
 
         # generate a URI if none is supplied
         @uri = _generate_uri if @uri == UNSET_VALUE
@@ -569,13 +608,17 @@ module VagrantPlugins
         # Domain specific settings.
         @uuid = '' if @uuid == UNSET_VALUE
         @memory = 512 if @memory == UNSET_VALUE
+        @memory_backing = [] if @memory_backing == UNSET_VALUE
         @cpus = 1 if @cpus == UNSET_VALUE
         @cpu_mode = 'host-model' if @cpu_mode == UNSET_VALUE
         @cpu_model = if (@cpu_model == UNSET_VALUE) && (@cpu_mode == 'custom')
                        'qemu64'
                      elsif @cpu_mode != 'custom'
                        ''
+                     else
+                       @cpu_model
           end
+        @cpu_topology = {} if @cpu_topology == UNSET_VALUE
         @cpu_fallback = 'allow' if @cpu_fallback == UNSET_VALUE
         @cpu_features = [] if @cpu_features == UNSET_VALUE
         @features = ['acpi','apic','pae'] if @features == UNSET_VALUE
@@ -600,7 +643,7 @@ module VagrantPlugins
            @graphics_passwd == UNSET_VALUE
           @graphics_passwd = nil
         end
-        @graphics_port = 5900 if @graphics_port == UNSET_VALUE
+        @graphics_port = -1 if @graphics_port == UNSET_VALUE
         @graphics_ip = '127.0.0.1' if @graphics_ip == UNSET_VALUE
         @video_type = 'cirrus' if @video_type == UNSET_VALUE
         @video_vram = 9216 if @video_vram == UNSET_VALUE

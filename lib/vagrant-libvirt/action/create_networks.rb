@@ -56,6 +56,7 @@ module VagrantPlugins
                 netmask:          @options[:netmask],
                 network_address:  nil,
                 bridge_name:      nil,
+                domain_name:      nil,
                 ipv6_address:     options[:ipv6_address] || nil,
                 ipv6_prefix:      options[:ipv6_prefix] || nil,
                 created:          false,
@@ -121,6 +122,7 @@ module VagrantPlugins
         def handle_ip_option(env)
           return unless @options[:ip]
           net_address = nil
+
           unless @options[:forward_mode] == 'veryisolated'
             net_address = network_address(@options[:ip], @options[:netmask])
 
@@ -240,8 +242,10 @@ module VagrantPlugins
         end
 
         def handle_dhcp_private_network(env)
-          net_address = '172.28.128.0'
+          net_address = @options[:libvirt__network_address]
+          net_address = '172.28.128.0' unless net_address
           network = lookup_network_by_ip(net_address)
+
           @interface_network = network if network
 
           # Do we need to create new network?
@@ -282,6 +286,8 @@ module VagrantPlugins
           @network_bridge_name = @interface_network[:bridge_name]
           @network_address = @interface_network[:ip_address]
           @network_netmask = @interface_network[:netmask]
+          @network_mtu = Integer(@options[:mtu]) if @options[:mtu]
+
           @guest_ipv6 = @interface_network[:guest_ipv6]
 
           @network_ipv6_address = @interface_network[:ipv6_address]
@@ -314,6 +320,8 @@ module VagrantPlugins
           else
             @network_dhcp_enabled = false
           end
+
+          @network_domain_name = @options[:domain_name]
 
           begin
             @interface_network[:libvirt_network] = \

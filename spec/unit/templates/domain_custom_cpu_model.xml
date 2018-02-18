@@ -5,8 +5,8 @@
   <vcpu>1</vcpu>
 
 
-  <cpu mode='host-model'>
-      <model fallback='allow'></model>
+  <cpu mode='custom'>
+      <model fallback='allow'>SandyBridge</model>
   </cpu>
 
 

@@ -34,6 +34,7 @@ module VagrantPlugins
           @uuid = config.uuid
           @cpus = config.cpus.to_i
           @cpu_features = config.cpu_features
+          @cpu_topology = config.cpu_topology
           @features = config.features
           @cpu_mode = config.cpu_mode
           @cpu_model = config.cpu_model
@@ -46,6 +47,7 @@ module VagrantPlugins
           @disk_device = config.disk_device
           @nested = config.nested
           @memory_size = config.memory.to_i * 1024
+          @memory_backing = config.memory_backing
           @management_network_mac = config.management_network_mac
           @domain_volume_cache = config.volume_cache
           @kernel = config.kernel
@@ -175,6 +177,10 @@ module VagrantPlugins
           env[:ui].info(" -- Forced UUID:       #{@uuid}") if @uuid != ''
           env[:ui].info(" -- Domain type:       #{@domain_type}")
           env[:ui].info(" -- Cpus:              #{@cpus}")
+          if not @cpu_topology.empty?
+            env[:ui].info(" -- CPU topology:   sockets=#{@cpu_topology[:sockets]}, cores=#{@cpu_topology[:cores]}, threads=#{@cpu_topology[:threads]}")
+          end
+          env[:ui].info("")
           @cpu_features.each do |cpu_feature|
             env[:ui].info(" -- CPU Feature:       name=#{cpu_feature[:name]}, policy=#{cpu_feature[:policy]}")
           end
@@ -182,6 +188,9 @@ module VagrantPlugins
             env[:ui].info(" -- Feature:           #{feature}")
           end
           env[:ui].info(" -- Memory:            #{@memory_size / 1024}M")
+          @memory_backing.each do |backing|
+            env[:ui].info(" -- Memory Backing:    #{backing[:name]}: #{backing[:config].map { |k,v| "#{k}='#{v}'"}.join(' ')}")
+          end
           env[:ui].info(" -- Management MAC:    #{@management_network_mac}")
           env[:ui].info(" -- Loader:            #{@loader}")
           if env[:machine].config.vm.box
